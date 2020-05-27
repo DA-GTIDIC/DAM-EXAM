@@ -22,6 +22,39 @@ class ResourceGetQuestions(DAMCoreResource):
         resp.media = questions
         resp.status = falcon.HTTP_200
 
+
+@falcon.before(requires_auth)
+class ResourceValidateQuestion(DAMCoreResource):
+    def on_get(self, req, resp, *args, **kwargs):
+        super(ResourceValidateQuestion, self).on_get(req, resp, *args, **kwargs)
+
+        question_id = req.get_param("id", False)
+        user_answer = req.get_param("answer", False)
+        query = self.db_session.query(Question).filter(Question.id == question_id)
+        question = query.first()
+        print("------------------------")
+        print("LA PREGUNTA ÉS " , question.question)
+        query = self.db_session.query(Answer, AnswerQuestionAssiation.is_correct) \
+            .join(AnswerQuestionAssiation).filter(question.id == AnswerQuestionAssiation.id_question)
+
+        answers = query.all()
+
+        for answer_ in answers:
+            aux = answer_[0].json_model
+            iscorrect = answer_[1]
+            if iscorrect:
+                print("LA RESPOSTA CORRECTA ÉS: " , answer_[0].answer)
+                print("LA RESPOSTA DE L'USUARI ÉS: ", user_answer)
+                resp.media = answer_[0].answer.__eq__(user_answer)
+                print("S'ESTA RETORNAT", resp.media , "A L'APP'")
+                resp.status = falcon.HTTP_200
+
+
+
+
+
+
+
 @falcon.before(requires_auth)
 class ResourceGetRandomQuestion(DAMCoreResource):
     def on_get(self, req, resp, *args, **kwargs):
@@ -37,6 +70,7 @@ class ResourceGetRandomQuestion(DAMCoreResource):
             query = query.filter(Question.category == CategoryEnum(category_filter))
 
         question = query.first()
+        print("------------------------")
         print(question.json_model)
 
         query = self.db_session.query(Answer, AnswerQuestionAssiation.is_correct) \
