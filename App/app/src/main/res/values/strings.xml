@@ -20,6 +20,8 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
 
+    <string name="win">Enhorabona, HAS GUANYAT!</string>
+    <string name="lose">Has perdut. Però tranquil, ho pots tornar a provar!</string>
     <string name="create_account">Create Account</string>
     <string name="already_login">Already a member? Login</string>
     <string name="agreement_terms_and_conditions"> Check here to indicate that you have read and
@@ -83,6 +85,8 @@
     <string name="calendar">Calendar</string>
     <string name="title_activity_maps">Map</string>
     <string name="this_icon_represents_the_type_of_the_event">This icon represents the type of the event</string>
+    <string name="errorconnection">ERROR EN CONNECTAR-SE A LA BASE DE DADES</string>
+    <string name="errorconnectionBody">Comprova la teva connexió a internet i torna-ho a provar</string>
 
 </resources>
 
