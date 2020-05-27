@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".views.PlayActivity">
 
     <Button
         android:id="@+id/roll"
@@ -98,5 +97,4 @@
             tools:layout_editor_absoluteY="157dp" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
