@@ -28,7 +28,8 @@
         android:layout_width="310dp"
         android:layout_height="117dp"
         android:layout_gravity="center"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="216dp"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
@@ -37,10 +38,8 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
         app:contentPadding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewPlay">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/adminIcon"
@@ -70,14 +69,13 @@
         android:layout_width="315dp"
         android:layout_height="128dp"
         android:layout_gravity="center"
+        android:layout_marginStart="56dp"
         android:layout_marginTop="72dp"
         android:padding="20dp"
         app:cardBackgroundColor="@android:color/holo_blue_dark"
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
         app:contentPadding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -108,6 +106,8 @@
         android:layout_width="310dp"
         android:layout_height="117dp"
         android:layout_gravity="center"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="346dp"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
@@ -116,12 +116,8 @@
         app:cardCornerRadius="20dp"
         app:cardElevation="20dp"
         app:contentPadding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAdmin"
-        app:layout_constraintVertical_bias="0.203">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/rankingIcon"
@@ -157,5 +153,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/textview_contador"
+        android:layout_width="62dp"
+        android:layout_height="52dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/btn_contador"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_textcont"
+        android:layout_width="202dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="468dp"
+        android:background="@drawable/btn_contador"
+        android:gravity="center"
+        android:text="Contador de preguntes"
+        android:textColor="#050505"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

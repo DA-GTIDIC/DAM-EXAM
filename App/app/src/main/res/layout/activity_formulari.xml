@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.Admin">
+    tools:context=".views.Formulari">
 
     <Button
-        android:id="@+id/btn_crear"
+        android:id="@+id/btn_crearpregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="183dp"
-        android:layout_marginTop="231dp"
-        android:text="CrearPreguntas"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="116dp"
+        android:text="CREAR"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
