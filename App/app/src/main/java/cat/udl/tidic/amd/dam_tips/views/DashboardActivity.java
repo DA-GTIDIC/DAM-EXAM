@@ -1,12 +1,10 @@
 package cat.udl.tidic.amd.dam_tips.views;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,12 +15,25 @@ public class DashboardActivity extends CustomActivty {
 
     private Button disconnect;
     private LoginViewModel loginViewModel;
+    private CardView admi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         initView();
+
+
+        // Tasca 1
+
+        admi = findViewById(R.id.cardViewAdmin);
+        admi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent i = new Intent(DashboardActivity.this, AdminAdapter.class);
+                    startActivity(i);
+            }
+        });
     }
 
 
@@ -47,7 +58,6 @@ public class DashboardActivity extends CustomActivty {
         });
 
     }
-
 
     @Override
     public void onBackPressed(){
