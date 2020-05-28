@@ -26,19 +26,14 @@ public class AccountDAOImpl implements AccountDAO{
     }
 
     @Override
-    public Call<List<Question>> getQuestionList() {
-        return retrofit.create(AccountDAO.class).getQuestList();
+    public Call<List<Question>> getQuestList() {
+        return null;
     }
 
     @Override
-    public Call<Question> getAQuestion(String category) {
-        return retrofit.create(AccountDAO.class).getQuest(category);
+    public Call<Question> getQuest(String category) {
+        return null;
     }
 
 
-    /*@Override
-    public Call<Boolean> validateQuestion(int id, String answer) {
-        return retrofit.create(AccountDAO.class).validQuest(id,answer);
-    }
-    */
 }
