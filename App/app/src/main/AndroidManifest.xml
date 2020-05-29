@@ -37,6 +37,7 @@
         <activity android:name=".views.DashboardActivity" />
         <activity android:name=".views.SignUpActivity" />
         <activity android:name=".views.LoginActivity" />
+        <activity android:name=".MainPage"/>
         <activity
             android:name=".views.MainActivity"
             android:theme="@style/SplashTheme">

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import cat.udl.tidic.amd.dam_tips.MainPage;
 import cat.udl.tidic.amd.dam_tips.R;
 import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
@@ -46,6 +47,11 @@ public class DashboardActivity extends CustomActivty {
             }
         });
 
+    }
+
+    public void onClick(View v){
+        Intent intent = new Intent(getApplicationContext(), MainPage.class);
+        startActivity(intent);
     }
 
 
