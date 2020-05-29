@@ -133,6 +133,7 @@ class User(SQLAlchemyBase, JSONModel):
     phone = Column(Unicode(50))
     photo = Column(Unicode(255))
     points = Column(Integer, default=0)
+    lives = Column(Integer, default=3)
     exam = Column(UnicodeText, default="")
 
 

@@ -51,6 +51,7 @@ public class LoginActivity extends CustomActivty {
                 Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
                 layoutFocus(true);
             } else {
+
                 goTo(DashboardActivity.class);
 
             }
