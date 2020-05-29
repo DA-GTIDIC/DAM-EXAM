@@ -51,17 +51,21 @@ public class DataModel extends Activity
 
         @SerializedName("category")
         public String category;
+        @SerializedName("type")
+        public FavourTypeEnum type;
         @SerializedName("question")
         public String name;
         @SerializedName("id")
         public int id;
 
 
-        public Favour(String name, String description, float amount, String category, int id, String user, int owner_id, double lat, double long_)
+
+        public Favour(String name, FavourTypeEnum type, float amount, String category, int id, String user, int owner_id, double lat, double long_)
         {
             this.category = category;
             this.name = name;
             this.id = id;
+            this.type = type;
             setIcon();
 
         }
@@ -79,6 +83,10 @@ public class DataModel extends Activity
         {
             if(amount % 1 != 0) {return  amount;}
             else { return (int) amount;}
+        }
+
+        public FavourTypeEnum getType(){
+            return type;
         }
 
         public String getCategoria()

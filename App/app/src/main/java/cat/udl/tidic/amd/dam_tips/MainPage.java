@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -43,6 +45,7 @@ public class MainPage extends AppCompatActivity  {
     private ListView llista;
     private ListView recyclerView;
     private Button uploadFavour;
+    public TextView colored;
     MainClassViewModel mainClassViewModel;
     DrawerItemCustomAdapter adapter_event;
     TabLayout tabs;
@@ -83,7 +86,6 @@ public class MainPage extends AppCompatActivity  {
     {
 
             mainClassViewModel.getAllFavours().observe(this, this::onGetFavoursData);
-
 
     }
 
@@ -145,6 +147,8 @@ public class MainPage extends AppCompatActivity  {
         recyclerView = findViewById(R.id.rv_recycler_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
         llista = findViewById(R.id.left_drawer);
+        colored = findViewById(R.id.favourTypeColour);
+
 
     }
 

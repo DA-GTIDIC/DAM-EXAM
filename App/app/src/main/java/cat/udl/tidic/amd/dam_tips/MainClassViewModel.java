@@ -24,7 +24,7 @@ import retrofit2.Response;
 public class MainClassViewModel extends MainPage implements LifecycleOwner {
     //private UserModel user = new UserModel();
     private UserServices userService;
-        private MutableLiveData<List<DataModel.Favour>> allFavours = new MutableLiveData<>();
+    private MutableLiveData<List<DataModel.Favour>> allFavours = new MutableLiveData<>();
     public LiveData<List<DataModel.Favour>> getAllFavours(){ return allFavours; }
     private Context c;
     public List<DataModel.Favour> listOfFavours;
@@ -91,7 +91,6 @@ public class MainClassViewModel extends MainPage implements LifecycleOwner {
 
                     favours = (DataModel.Favour[]) response_.toArray(new DataModel.Favour[response_.size()]);
                     allFavours.setValue(response_);
-                    Log.d("ALLFAVOURS",favour.name);
                     //LoadingPanel.enableLoading(c,false);
 
                 }

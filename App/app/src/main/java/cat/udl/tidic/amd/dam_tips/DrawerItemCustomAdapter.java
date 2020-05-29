@@ -3,6 +3,7 @@ package cat.udl.tidic.amd.dam_tips;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
@@ -83,6 +86,7 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
         {
             if (position == data.length-1)
             {
+                Log.d("GETVIEW","------------");
                 //Aquesta variable s'utilitzara per a saber quantes crides a l'API s'han fet
                 //nextnilst = 0 ? --> S'han carregat els primers 100 favors
                 //nextnilst = 1 ? --> S'han carregat els favors del 100 al 200
@@ -99,19 +103,26 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
     }
 
 
+
     private void inflateFavour(View listItem, int position)
     {
-
         ImageView imageViewIcon = listItem.findViewById(R.id.iv_image);
         TextView textViewName = listItem.findViewById(R.id.tv_text);
         TextView amount = listItem.findViewById(R.id.favourCategoryName);
-
+        TextView colored = listItem.findViewById(R.id.favourTypeColour);
+        Log.d("TEXTVIEW-----", "HEY");
         DataModel.Favour folder = (DataModel.Favour) data[position];
+//
+
 
         Log.d("DICA","folder: " + folder.id);
-        Log.d("DICA", "folder: "+folder.category);
+
+
+
+
         if (folder != null) {
             textViewName.setText(folder.name);
+            colored.setBackgroundColor(FavourTypeEnum.getColourResource(folder.getCategoria()));
 
 //            amount.setText(String.format("%s", folder.getCategoria()));
         }
