@@ -7,9 +7,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
+import java.util.List;
 
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAOImpl;
+import cat.udl.tidic.amd.dam_tips.models.Question;
 import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -22,10 +24,12 @@ public class AccountRepo {
 
     private AccountDAO accountDAO;
     private MutableLiveData<String> mResponseLogin;
+    private MutableLiveData<Integer> mSizequestions;
 
     public AccountRepo() {
         this.accountDAO = new AccountDAOImpl();
         this.mResponseLogin = new MutableLiveData<>();
+        this.mSizequestions = new MutableLiveData<>();
     }
 
 
@@ -46,6 +50,7 @@ public class AccountRepo {
 
                     String authToken = res.get("token").getAsString();
                     Log.d(TAG,  "createTokenUser() -> ha rebut el token:  " + authToken);
+                    Log.d(TAG,  "createTokenUser() -> ha rebut el examen:  " + res.get("exam"));
                     mResponseLogin.setValue(authToken);
                     PreferencesProvider.providePreferences().edit().
                             putString("token", authToken).apply();
@@ -109,8 +114,32 @@ public class AccountRepo {
 
         });
     }
+    public void getQuestions(){
+        accountDAO.getQuestions().enqueue(new Callback<List<Question>>() {
+            @Override
+            public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
+                if (response.code()==200){
+                    List<Question> li = response.body();
+                    mSizequestions.setValue(li.size());
+                }
+                else{
+                    Log.d(TAG,  "size FAIL() onFailure() -> ha rebut el missatge:  " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Question>> call, Throwable t) {
+                Log.d(TAG,  "deleteTokenUser() onFailure() -> ha rebut el missatge:  " + t.getMessage());
+            }
+        });
+
+    }
+
 
     public MutableLiveData<String> getmResponseLogin() {
         return mResponseLogin;
+    }
+    public MutableLiveData<Integer> getmSizequestions() {
+        return mSizequestions;
     }
 }
