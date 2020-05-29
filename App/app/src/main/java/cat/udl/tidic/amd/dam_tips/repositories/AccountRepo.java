@@ -37,7 +37,9 @@ public class AccountRepo {
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
 
                 int code = response.code();
+                JsonObject todo = response.body();
                 Log.d(TAG,  "createTokenUser() -> ha rebut del backend un codi:  " + code);
+                Log.d(TAG, todo.toString() );
 
                 if (code == 200 ){
 

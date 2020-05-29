@@ -16,6 +16,7 @@ import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 public class DashboardActivity extends CustomActivty {
 
     private Button disconnect;
+    private CardView play;
     private LoginViewModel loginViewModel;
 
     @Override
@@ -33,9 +34,18 @@ public class DashboardActivity extends CustomActivty {
         disconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    loginViewModel.logout();
+                loginViewModel.logout();
+                goTo(LoginActivity.class);
             }
         });
+        play = findViewById(R.id.cardViewPlay);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(GameActivity.class);
+            }
+        });
+
 
         loginViewModel.getResponseLogin().observe(this, new Observer<String>() {
             @Override

@@ -22,6 +22,7 @@ class ResourceGetQuestions(DAMCoreResource):
         resp.media = questions
         resp.status = falcon.HTTP_200
 
+
 @falcon.before(requires_auth)
 class ResourceGetRandomQuestion(DAMCoreResource):
     def on_get(self, req, resp, *args, **kwargs):
@@ -94,5 +95,43 @@ class ResourceAddQuestion(DAMCoreResource):
 
         except KeyError:
             raise falcon.HTTPBadRequest(description=messages.parameters_invalid)
+
+        resp.status = falcon.HTTP_200
+
+
+@falcon.before(requires_auth)
+class ResourceCheckCorrectAnswer(DAMCoreResource):
+    def on_get(self, req, resp, *args, **kwargs):
+        super(ResourceCheckCorrectAnswer, self).on_get(req, resp, *args, **kwargs)
+
+        # Recivimos un JSON del usuario con 2 parámetros
+        # "question" : EL texto de la pregunta
+        # "answer" : la respuesta que el usuario ha dado a la pregunta
+
+        aux_question = Question()
+        aux_question.question = req.media["question"]
+
+        # Filtraremos la pregunta para tener su id
+        real_question = self.db_session.query(Question).filter \
+            (aux_question.question == Question.question).one()
+
+        aux_answer = Answer()
+        aux_answer.answer = req.media["answer"]
+
+        # Filtraremos la respuesta para tener su id
+        real_answer = self.db_session.query(Answer).filter \
+            (aux_answer.answer == Answer.answer).one()
+
+        # Finalmente filtraremos en la Asociacion para comprovar si es correcta
+        query = self.db_session.query(AnswerQuestionAssiation).filter\
+            (real_question.id == AnswerQuestionAssiation.id_question,
+             real_answer.id == AnswerQuestionAssiation.id_answer).one()
+
+        print(query.is_correct)
+
+        if  query.is_correct:
+            resp.media = "La Respuesta es Correcta"
+        else:
+            resp.media = "La Respuesta no es Correcta"
 
         resp.status = falcon.HTTP_200

@@ -1,5 +1,5 @@
 <resources>
-        <string name="app_name">DAM-EXAM</string>
+    <string name="app_name">DAM-EXAM</string>
 
 
     <string name="error_invalid_email">This email address is invalid</string>
