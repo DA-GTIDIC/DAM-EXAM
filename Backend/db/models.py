@@ -63,19 +63,18 @@ class CategoryEnum(enum.Enum):
     patterns = "patterns"
 
 
-
 class AnswerQuestionAssiation(SQLAlchemyBase, JSONModel):
-        __tablename__ = "answer-question-association"
+    __tablename__ = "answer-question-association"
 
-        id_question = Column(Integer, ForeignKey("questions.id",
+    id_question = Column(Integer, ForeignKey("questions.id",
                                              onupdate="CASCADE", ondelete="CASCADE"),
                          nullable=False, primary_key=True)
-        id_answer = Column(Integer, ForeignKey("answers.id",
-                                                   onupdate="CASCADE", ondelete="CASCADE"),
-                               nullable=False, primary_key=True)
-        is_correct = Column(Boolean, nullable=False)
+    id_answer = Column(Integer, ForeignKey("answers.id",
+                                           onupdate="CASCADE", ondelete="CASCADE"),
+                       nullable=False, primary_key=True)
+    is_correct = Column(Boolean, nullable=False)
 
-        answers = relationship("Answer")
+    answers = relationship("Answer")
 
 
 class Answer(SQLAlchemyBase, JSONModel):
@@ -100,6 +99,11 @@ class Question(SQLAlchemyBase, JSONModel):
     category = Column(Enum(CategoryEnum))
     answers = relationship("AnswerQuestionAssiation")
 
+    owners_id = Column(Integer, ForeignKey("users.id", onupdate="CASCADE", ondelete="CASCADE"), nullable=True)
+    owner = relationship("User", back_populates="questions_owner")
+
+
+
     @hybrid_property
     def json_model(self):
         return {
@@ -107,6 +111,7 @@ class Question(SQLAlchemyBase, JSONModel):
             "question": self.question,
             "category": self.category.value,
         }
+
 
 class UserToken(SQLAlchemyBase):
     __tablename__ = "users_tokens"
@@ -135,6 +140,7 @@ class User(SQLAlchemyBase, JSONModel):
     points = Column(Integer, default=0)
     exam = Column(UnicodeText, default="")
 
+    questions_owner = relationship("Question", back_populates="owner")
 
     @hybrid_property
     def public_profile(self):
@@ -161,7 +167,6 @@ class User(SQLAlchemyBase, JSONModel):
     @hybrid_method
     def set_exam(self, exam_string):
         self.exam = cisco_type7.hash(exam_string)
-
 
     @hybrid_method
     def check_password(self, password_string):

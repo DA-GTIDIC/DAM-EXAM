@@ -8,7 +8,7 @@ from hooks import requires_auth
 from resources.base_resources import DAMCoreResource
 
 
-@falcon.before(requires_auth)
+
 class ResourceGetQuestions(DAMCoreResource):
     def on_get(self, req, resp, *args, **kwargs):
         super(ResourceGetQuestions, self).on_get(req, resp, *args, **kwargs)

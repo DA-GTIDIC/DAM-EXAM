@@ -99,6 +99,7 @@ if __name__ == "__main__":
             if l[0]=="C":
                 q = Question()
                 q.category=str.strip(l[1])
+                q.owners_id = 1
             elif l[0]=="Q":
                 q.question=str.strip(l[1])
             elif l[0] == "AF" or l[0] == "AT":
