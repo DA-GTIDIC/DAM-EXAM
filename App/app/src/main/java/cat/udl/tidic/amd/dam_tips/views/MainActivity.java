@@ -1,15 +1,9 @@
 package cat.udl.tidic.amd.dam_tips.views;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import cat.udl.tidic.amd.dam_tips.R;
-import cat.udl.tidic.amd.dam_tips.utils.EULA;
 import cat.udl.tidic.amd.dam_tips.viewmodels.MainActivityViewModel;
 
 public class MainActivity extends CustomActivty {

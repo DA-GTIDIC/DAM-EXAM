@@ -11,7 +11,6 @@ import java.io.IOException;
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAOImpl;
 import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,6 +45,7 @@ public class AccountRepo {
 
                     String authToken = res.get("token").getAsString();
                     Log.d(TAG,  "createTokenUser() -> ha rebut el token:  " + authToken);
+                    Log.d(TAG, "He rebut el examen: " + res.get("exam"));
                     mResponseLogin.setValue(authToken);
                     PreferencesProvider.providePreferences().edit().
                             putString("token", authToken).apply();
@@ -88,6 +88,7 @@ public class AccountRepo {
                 if (code == 200 ){
                     PreferencesProvider.providePreferences().edit().remove("token").apply();
                     mResponseLogin.setValue("Ok. 200. Deleted.");
+
                 }
                 else{
                     try {

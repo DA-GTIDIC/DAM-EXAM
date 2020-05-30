@@ -1,6 +1,5 @@
 package cat.udl.tidic.amd.dam_tips.viewmodels;
 
-import android.content.SharedPreferences;
 import android.util.Base64;
 
 import androidx.lifecycle.MutableLiveData;
