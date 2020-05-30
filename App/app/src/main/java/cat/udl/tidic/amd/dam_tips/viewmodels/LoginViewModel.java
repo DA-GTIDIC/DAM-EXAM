@@ -2,6 +2,7 @@ package cat.udl.tidic.amd.dam_tips.viewmodels;
 
 import android.content.SharedPreferences;
 import android.util.Base64;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -41,7 +42,7 @@ public class LoginViewModel {
         byte[] data = auth_token.getBytes(StandardCharsets.UTF_8);
         auth_token = Base64.encodeToString(data, Base64.DEFAULT);
         auth_token = ("Authentication " + auth_token).trim();
-
+        Log.d("token", auth_token);
         // Ha de ser commit, ens hem d'assegurar que i són per l'interceptor.
         PreferencesProvider.providePreferences().edit().putString("token", auth_token).commit();
 

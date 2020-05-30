@@ -1,9 +1,10 @@
 import falcon
 from pymysql import IntegrityError
 from sqlalchemy import func
+from sqlalchemy.orm.exc import NoResultFound
 
 import messages
-from db.models import CategoryEnum, Question, Answer, AnswerQuestionAssiation
+from db.models import CategoryEnum, Question, Answer, AnswerQuestionAssiation, User
 from hooks import requires_auth
 from resources.base_resources import DAMCoreResource
 
@@ -21,6 +22,22 @@ class ResourceGetQuestions(DAMCoreResource):
 
         resp.media = questions
         resp.status = falcon.HTTP_200
+
+@falcon.before(requires_auth)
+class ResourceGetNumber(DAMCoreResource):
+    def on_get(self, req, resp, *args, **kwargs):
+        super(ResourceGetNumber, self).on_get(req, resp, *args, **kwargs)
+        if "id" in kwargs:
+            try:
+                z=0
+                i = self.db_session.query(Question).filter(Question.owner_id == kwargs["id"]).all()
+                for j in i:
+                    z=z+1
+                resp.media = z
+                resp.status = falcon.HTTP_200
+
+            except NoResultFound:
+                raise falcon.HTTPBadRequest()
 
 @falcon.before(requires_auth)
 class ResourceGetRandomQuestion(DAMCoreResource):
@@ -66,10 +83,11 @@ class ResourceAddQuestion(DAMCoreResource):
             try:
                 q.question = req.media["question"]
                 category = req.media["category"]
-
+                owner_id = req.media["owner_id"]
                 if category not in [i.value for i in CategoryEnum.__members__.values()]:
                     raise falcon.HTTPInvalidParam(messages.event_status_invalid, "category")
                 q.category = category
+                q.owner_id = owner_id
                 answers = req.media["answers"]
                 self.db_session.add(q)
                 for answer in answers:
@@ -80,7 +98,6 @@ class ResourceAddQuestion(DAMCoreResource):
                     s = AnswerQuestionAssiation()
                     s.id_question = q.id
                     s.id_answer = a.id
-
                     if answer["is_correct"]:
                         s.is_correct = True
                     else:

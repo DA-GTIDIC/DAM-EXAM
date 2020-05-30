@@ -1,0 +1,7 @@
+1. És possible crear una nova categoria sense fer cap modificació a l'API.
+Justifica la resposta.
+No es posible perquè sinó a la hora de crear la pregunta a la base de dades si s'intenta crear la nova categoria, a l'hora de fer la crida no la trobaria y no funcionaria.
+
+2. Quins avantatges té fer anar l'API vs no fer-ho, per mostrar el nº de preguntes creades per cada usuari?
+Que pots tenir el registre guardat del total de preguntes guardades per l'usuari per poder utilitzarlas quan es vulgui, si ho fas desde l'app si la desinstales perdrás la informació per a quan
+la tornis a instalar o iniciar.
