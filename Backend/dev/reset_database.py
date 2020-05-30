@@ -94,6 +94,7 @@ if __name__ == "__main__":
         line = fp.readline()
         cnt = 1
         q = None
+
         while line:
             l = line.split(":")
             if l[0]=="C":
@@ -102,6 +103,7 @@ if __name__ == "__main__":
             elif l[0]=="Q":
                 q.question=str.strip(l[1])
             elif l[0] == "AF" or l[0] == "AT":
+                q.owner_id = int(random.uniform(1, 20))
                 db_session.add(q)
                 db_session.commit()
                 a = Answer()
@@ -118,6 +120,7 @@ if __name__ == "__main__":
                     s.is_correct = False
                 db_session.add(s)
                 db_session.commit()
+
 
             cnt += 1
             line = fp.readline()

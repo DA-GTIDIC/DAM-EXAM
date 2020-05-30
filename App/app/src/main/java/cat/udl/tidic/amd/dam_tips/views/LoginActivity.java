@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import cat.udl.tidic.amd.dam_tips.R;
+import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
+import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
+import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
 public class LoginActivity extends CustomActivty {
@@ -25,7 +29,8 @@ public class LoginActivity extends CustomActivty {
     private LoginViewModel loginViewModel;
     private LinearLayout _progressBar;
     private TextView _link_signup;
-
+    private AccountDAO accountDAO;
+    private SharedPreferences mPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

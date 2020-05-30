@@ -99,6 +99,8 @@ class Question(SQLAlchemyBase, JSONModel):
     question = Column(UnicodeText)
     category = Column(Enum(CategoryEnum))
     answers = relationship("AnswerQuestionAssiation")
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner = relationship("User", back_populates="questions")
 
     @hybrid_property
     def json_model(self):
@@ -106,6 +108,7 @@ class Question(SQLAlchemyBase, JSONModel):
             "id": self.id,
             "question": self.question,
             "category": self.category.value,
+            "owner_id": self.owner_id,
         }
 
 class UserToken(SQLAlchemyBase):
@@ -115,7 +118,6 @@ class UserToken(SQLAlchemyBase):
     token = Column(Unicode(50), nullable=False, unique=True)
     user_id = Column(Integer, ForeignKey("users.id", onupdate="CASCADE", ondelete="CASCADE"), nullable=False)
     user = relationship("User", back_populates="tokens")
-
 
 class User(SQLAlchemyBase, JSONModel):
     __tablename__ = "users"
@@ -135,6 +137,7 @@ class User(SQLAlchemyBase, JSONModel):
     points = Column(Integer, default=0)
     exam = Column(UnicodeText, default="")
 
+    questions = relationship("Question", back_populates="owner")
 
     @hybrid_property
     def public_profile(self):
