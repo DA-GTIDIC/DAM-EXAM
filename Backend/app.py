@@ -45,5 +45,8 @@ application.add_route("/users/list", user_resources.ResourceGetUsers())
 application.add_route("/trivial/question/list", trivial_events.ResourceGetQuestions())
 application.add_route("/trivial/question", trivial_events.ResourceGetRandomQuestion())
 application.add_route("/trivial/question/add", trivial_events.ResourceAddQuestion())
+application.add_route("/trivial/question_no_answer", trivial_events.ResourceGetRandomQuestionNoAnswer())
+
+application.add_route("/trivial/check_question/{id_pregunta}/{id_respuesta}", trivial_events.ResourceCheckQuestion())
 
 application.add_sink(handle_404, "")

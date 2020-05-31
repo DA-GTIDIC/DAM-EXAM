@@ -54,6 +54,44 @@ class ResourceGetRandomQuestion(DAMCoreResource):
         resp.media = response
         resp.status = falcon.HTTP_200
 
+@falcon.before(requires_auth)
+class ResourceCheckQuestion(DAMCoreResource):
+    def on_get(self, req, resp, *args, **kwargs):
+        super(ResourceCheckQuestion, self).on_get(req, resp, *args, **kwargs)
+
+        if ("id_pregunta" in kwargs and "id_respuesta" in kwargs):
+            
+            query = self.db_session.query(Answer, AnswerQuestionAssiation.is_correct) \
+                .join(AnswerQuestionAssiation).filter(kwargs["id_pregunta"] == AnswerQuestionAssiation.id_question).filter(kwargs["id_respuesta"] == AnswerQuestionAssiation.id_answer)
+
+            answer = query.one()
+            response = {}
+            response["answer"] = answer[1]
+
+            resp.media = response
+            resp.status = falcon.HTTP_200
+
+
+@falcon.before(requires_auth)
+class ResourceGetRandomQuestionNoAnswer(DAMCoreResource):
+    def on_get(self, req, resp, *args, **kwargs):
+        super(ResourceGetRandomQuestionNoAnswer, self).on_get(req, resp, *args, **kwargs)
+
+        category_filter = req.get_param("category", False)
+        if category_filter is not None:
+            if category_filter not in [i.value for i in CategoryEnum.__members__.values()]:
+                raise falcon.HTTPInvalidParam(messages.event_status_invalid, "category")
+
+        query = self.db_session.query(Question).filter().order_by(func.rand())
+        if category_filter is not None:
+            query = query.filter(Question.category == CategoryEnum(category_filter))
+
+        question = query.first()
+        print(question.json_model)
+        response = question.json_model
+        
+        resp.media = response
+        resp.status = falcon.HTTP_200
 
 @falcon.before(requires_auth)
 class ResourceAddQuestion(DAMCoreResource):
