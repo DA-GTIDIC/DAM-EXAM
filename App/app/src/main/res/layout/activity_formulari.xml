@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D6EAF8"
+    tools:context=".views.Formulari">
+
+
+    <Switch
+        android:id="@+id/Switch_a3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="368dp"
+        android:text="Correct"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/Switch_a4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="420dp"
+        android:text="Correct"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_crearpregunta"
+        android:layout_width="293dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="536dp"
+        android:background="@drawable/btn_contador"
+        android:text="ADD"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView_pregunta"
+        android:layout_width="282dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="93dp"
+        android:background="@drawable/btn_contador"
+        android:gravity="center"
+        android:text="Write a Question"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView_formulari"
+        android:layout_width="224dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="CREATE"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditText_question"
+        android:layout_width="285dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="148dp"
+        android:background="@drawable/btn_texto"
+        android:ems="10"
+        android:hint=" Question"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditText_Answer1"
+        android:layout_width="219dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="268dp"
+        android:background="@drawable/btn_texto"
+        android:ems="10"
+        android:enabled="true"
+        android:hint=" Answer1"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="77dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="208dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/btn_texto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="84dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="468dp"
+        android:background="@drawable/btn_texto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView_resposta"
+        android:layout_width="255dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="208dp"
+        android:background="@drawable/btn_contador"
+        android:gravity="center"
+        android:text="Answer"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_categoria"
+        android:layout_width="156dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="468dp"
+        android:background="@drawable/btn_contador"
+        android:gravity="center"
+        android:text="Category"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
+
+    <EditText
+        android:id="@+id/EditText_Answer2"
+        android:layout_width="219dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="316dp"
+        android:background="@drawable/btn_texto"
+        android:ems="10"
+        android:enabled="false"
+        android:hint=" Answer2"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/EditText_Answer4"
+        android:layout_width="219dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/btn_texto"
+        android:ems="10"
+        android:enabled="false"
+        android:hint=" Answer4"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EditText_Answer3"
+        android:layout_width="219dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="368dp"
+        android:background="@drawable/btn_texto"
+        android:ems="10"
+        android:enabled="false"
+        android:hint=" Answer3"
+        android:inputType="textPersonName"
+        android:paddingStart="20dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/Switch_a1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="268dp"
+        android:text="Correct"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/Switch_a2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="316dp"
+        android:text="Correct"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView_salida"
+        android:layout_width="239dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="512dp"
+        android:gravity="center"
+        android:textColor="#F80707"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package cat.udl.tidic.amd.dam_tips.viewmodels;
 
 import android.content.SharedPreferences;
 import android.util.Base64;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -44,7 +45,6 @@ public class LoginViewModel {
 
         // Ha de ser commit, ens hem d'assegurar que i són per l'interceptor.
         PreferencesProvider.providePreferences().edit().putString("token", auth_token).commit();
-
         this.accountRepo.createTokenUser();
     }
 
