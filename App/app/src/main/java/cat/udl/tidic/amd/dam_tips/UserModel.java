@@ -16,16 +16,19 @@ public class UserModel
     private FavourTypeEnum type;
     @SerializedName("id")
     private int id;
+    @SerializedName("rate")
+    private int rate;
 
 
 
 
-    public UserModel(String name, String category, int id, FavourTypeEnum type)
+    public UserModel(String name, String category, int id, FavourTypeEnum type, int rate)
     {
         this.name = name;
         this.id = id;
         this.category = category;
         this.type = type;
+        this.rate = rate;
     }
 
 
@@ -35,6 +38,13 @@ public class UserModel
 
     public FavourTypeEnum getType(){
         return type;
+    }
+    public int getRate(){
+        return rate;
+    }
+
+    public void setRate(int rate){
+        this.rate = rate;
     }
 
     public void setType(FavourTypeEnum type){

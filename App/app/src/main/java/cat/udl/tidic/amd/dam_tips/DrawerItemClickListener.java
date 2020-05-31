@@ -13,9 +13,17 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 
+import com.google.gson.JsonObject;
+
+import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
+import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 import cat.udl.tidic.amd.dam_tips.views.MainActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
@@ -24,6 +32,7 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener {
     private Context c;
     private MainClassViewModel mc;
     private int ratingProgress;
+
 
 
 
@@ -46,21 +55,12 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener {
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
+
         DataModel d = (DataModel) parent.getItemAtPosition(position);
         //Si el item que s'ha clickat és de la classe MenuList(el menu de la pàgina principal...)
-        if (d instanceof DataModel.MenuList)
-        {
-            switch (position)
-            {
-                case 0:
-                    Log.d("Open profile", "clicked");
-                    goToProfile();
-                    break;
-            }
 
-        }
         //Si el item que s'ha clickat és un favor...
-        else if (d instanceof DataModel.Favour)
+        if (d instanceof DataModel.Favour)
         {
             //goToSeeAnunci((DataModel.Favour)d);
             Log.d("Question-----", "one");
@@ -128,6 +128,7 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         d.setRating(rating.getProgress());
+                        mc.postRate(d);
                         dialog.dismiss();
                     }
 

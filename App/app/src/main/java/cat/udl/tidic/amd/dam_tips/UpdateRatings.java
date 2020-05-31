@@ -2,6 +2,7 @@ package cat.udl.tidic.amd.dam_tips;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
@@ -30,7 +31,7 @@ public class UpdateRatings {
         String token = PreferencesProvider.providePreferences().getString("token","");
         JsonObject user_json = new JsonObject();
         user_json.addProperty("rating", currentFavourData.rating);
-        Call<Void> call = userService.postRate(token,currentFavourData.id,user_json);
+        Call<Void> call = userService.postRate(currentFavourData.id,user_json);
         //noinspection NullableProblems
         call.enqueue(new Callback<Void>() {
             @Override
@@ -39,7 +40,8 @@ public class UpdateRatings {
                 if (response.code() == 200)
                 {
 
-
+                    Context c = App.getAppContext();
+                    Toast.makeText(c , "Moltes gràcies per valorar.", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
