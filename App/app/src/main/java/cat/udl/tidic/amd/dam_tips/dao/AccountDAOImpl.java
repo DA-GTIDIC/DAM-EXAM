@@ -27,13 +27,13 @@ public class AccountDAOImpl implements AccountDAO{
 
     @Override
     public Call<List<Question>> getQuestList() {
-        return null;
+        return retrofit.create(AccountDAO.class).getQuestList();
     }
 
-    @Override
+    /*@Override
     public Call<Question> getQuest(String category) {
         return null;
     }
-
+    */
 
 }

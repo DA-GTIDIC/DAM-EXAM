@@ -27,11 +27,4 @@ public interface AccountDAO {
     @GET("/trivial/question/list")
     Call<List<Question>> getQuestList();
 
-    @GET("/trivial/question")
-    Call<Question> getQuest(@Query("category") String category);
-
-    /*
-    @GET("/trivial/question/validate")
-    Call<Boolean> validQuest(@Query("id") int id, @Query("answer") String answer);
-     */
 }

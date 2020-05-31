@@ -1,5 +1,4 @@
 package cat.udl.tidic.amd.dam_tips.models;
-import android.util.Log;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
@@ -50,7 +49,6 @@ public class Question {
     public String getCategory(){
         return category;
     }
-
 
 
 }

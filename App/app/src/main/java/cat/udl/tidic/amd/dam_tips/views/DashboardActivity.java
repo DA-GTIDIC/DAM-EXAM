@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import cat.udl.tidic.amd.dam_tips.R;
+import cat.udl.tidic.amd.dam_tips.models.Question;
 import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
 public class DashboardActivity extends CustomActivty {
@@ -22,32 +23,17 @@ public class DashboardActivity extends CustomActivty {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         initView();
-
-
-        // Tasca 1
-
-        admi = findViewById(R.id.cardViewAdmin);
-        admi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Intent i = new Intent(DashboardActivity.this, AdminAdapter.class);
-                    startActivity(i);
-            }
-        });
     }
 
-
-
-    protected void initView(){
+    protected void initView() {
         loginViewModel = new LoginViewModel();
         disconnect = findViewById(R.id.disconnect);
         disconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    loginViewModel.logout();
+                loginViewModel.logout();
             }
         });
-
         loginViewModel.getResponseLogin().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -57,11 +43,57 @@ public class DashboardActivity extends CustomActivty {
             }
         });
 
+        admi = findViewById(R.id.cardViewAdmin);
+        admi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(QuestActivity.class);
+            }
+        });
+
     }
 
-    @Override
-    public void onBackPressed(){
-        finishAffinity();
-    }
+    /*
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_dashboard);
+            initView();
 
+            admi = findViewById(R.id.cardViewAdmin);
+            admi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(DashboardActivity.this, QuestActivity.class);
+                    startActivity(i);
+                }
+            });
+        }
+
+        protected void initView() {
+            loginViewModel = new LoginViewModel();
+            disconnect = findViewById(R.id.disconnect);
+            disconnect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loginViewModel.logout();
+                }
+            });
+
+            loginViewModel.getResponseLogin().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    if (!s.startsWith("Error")) {
+                        goTo(LoginActivity.class);
+                    }
+                }
+            });
+        }
+
+
+     */
+        @Override
+        public void onBackPressed(){
+            finishAffinity();
+        }
 }

@@ -1,17 +1,14 @@
 package cat.udl.tidic.amd.dam_tips.repositories;
 
 import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
-
 import com.google.gson.JsonObject;
-
 import java.io.IOException;
-
+import java.util.List;
+import cat.udl.tidic.amd.dam_tips.models.Question;
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
 import cat.udl.tidic.amd.dam_tips.dao.AccountDAOImpl;
 import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,7 +44,7 @@ public class AccountRepo {
                     String authToken = res.get("token").getAsString();
                     Log.d(TAG,  "createTokenUser() -> ha rebut el token:  " + authToken);
                     String aExam = res.get("exam").getAsString();
-                    Log.d(TAG,  "createTokenUser() -> ha rebut el token:  " + aExam);
+                    Log.d(TAG,  "createTokenUser() -> ha rebut el token de l'examen:  " + aExam);
                     mResponseLogin.setValue(authToken);
                     PreferencesProvider.providePreferences().edit().
                             putString("token", authToken).apply();
@@ -112,7 +109,35 @@ public class AccountRepo {
         });
     }
 
+    public MutableLiveData<List<Question>> getQuestionList(){
+
+        accountDAO.getQuestList().enqueue(new Callback<List<Question>>() {
+            @Override
+            public void onResponse(Call<List<Question>> call, Response<List<Question>> response) {
+                if(response.code() == 200){
+                    Log.d(TAG, "Llista d'assignatures obtinguda");
+                    List<Question> list = response.body();
+                    Log.d(TAG, "Llista retornada" + list);
+                }
+                else{
+                    Log.d(TAG, "size FAIL() onFailure --> ha rebut l'error: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Question>> call, Throwable t) {
+                Log.d(TAG, "Error en la comunicació amb la API: " + t.getMessage());
+            }
+            });
+        return null;
+    }
+
+
+
+
+
     public MutableLiveData<String> getmResponseLogin() {
         return mResponseLogin;
     }
+
 }

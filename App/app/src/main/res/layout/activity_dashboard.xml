@@ -24,7 +24,7 @@
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewAdmin"
+        android:id="@+id/cardViewRanking"
         android:layout_width="310dp"
         android:layout_height="117dp"
         android:layout_gravity="center"
@@ -104,7 +104,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewRanking"
+        android:id="@+id/cardViewAdmin"
         android:layout_width="310dp"
         android:layout_height="117dp"
         android:layout_gravity="center"
@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardViewAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewRanking"
         app:layout_constraintVertical_bias="0.203">
 
         <ImageView
