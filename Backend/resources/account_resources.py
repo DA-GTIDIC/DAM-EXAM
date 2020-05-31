@@ -51,6 +51,7 @@ class ResourceCreateUserToken(DAMCoreResource):
 
                 resp.media = {"token": current_token.token,
                               "exam": e}
+                print(e)
                 resp.status = falcon.HTTP_200
             except Exception as e:
                 mylogger.critical("{}:{}".format(messages.error_saving_user_token, e))

@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="toolbarMenu">
+        <item name="icon">@drawable/menulist</item>
+        <item name="android:colorPrimary">@color/blue</item>
+        <item name="android:background">@color/blue</item>
+        <item name="android:color">@color/red</item>
+    </style>
+
+
     <!-- Splash screen theme. -->
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splash_screen</item>
