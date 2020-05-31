@@ -29,6 +29,7 @@
         android:layout_height="117dp"
         android:layout_gravity="center"
         android:layout_marginTop="56dp"
+        android:onClick="showDialog"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"

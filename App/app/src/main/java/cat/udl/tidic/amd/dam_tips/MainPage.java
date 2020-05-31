@@ -1,7 +1,9 @@
 package cat.udl.tidic.amd.dam_tips;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,7 +17,11 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -46,6 +52,7 @@ public class MainPage extends AppCompatActivity  {
     private ListView recyclerView;
     private Button uploadFavour;
     public TextView colored;
+    private ImageView filtreButton;
     MainClassViewModel mainClassViewModel;
     DrawerItemCustomAdapter adapter_event;
     TabLayout tabs;
@@ -147,7 +154,7 @@ public class MainPage extends AppCompatActivity  {
         recyclerView = findViewById(R.id.rv_recycler_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
         llista = findViewById(R.id.left_drawer);
-        colored = findViewById(R.id.favourTypeColour);
+        filtreButton = findViewById(R.id.filtre);
 
 
     }
@@ -159,6 +166,10 @@ public class MainPage extends AppCompatActivity  {
             uploadFavour.setVisibility(View.VISIBLE);
 
 
+    }
+
+    private void onFiltreClick(View v){
+        
     }
 
 
@@ -216,6 +227,8 @@ public class MainPage extends AppCompatActivity  {
 
 
     }
+
+
 
 
 

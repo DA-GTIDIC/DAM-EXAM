@@ -57,26 +57,35 @@ public class DataModel extends Activity
         public String name;
         @SerializedName("id")
         public int id;
+        @SerializedName("rating ")
+        public int rating;
 
 
 
-        public Favour(String name, FavourTypeEnum type, float amount, String category, int id, String user, int owner_id, double lat, double long_)
+
+        public Favour(String name, FavourTypeEnum type, int rating, String category, int id, String user, int owner_id, double lat, double long_)
         {
             this.category = category;
             this.name = name;
             this.id = id;
             this.type = type;
+            this.rating = rating;
             setIcon();
 
         }
 
 
 
-
+        public int getRating()
+        {
+            return  this.rating;
+        }
         public String getName()
         {
            return  this.name;
         }
+
+        public void setRating(int rating){ this.rating = rating;}
 
 
         public float parseFloat(float amount)

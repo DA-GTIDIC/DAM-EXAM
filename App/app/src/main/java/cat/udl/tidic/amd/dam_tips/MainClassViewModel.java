@@ -1,9 +1,13 @@
 package cat.udl.tidic.amd.dam_tips;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.LinearLayout;
+import android.widget.RatingBar;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -17,6 +21,7 @@ import java.util.Objects;
 
 import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
 import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
+import cat.udl.tidic.amd.dam_tips.views.MainActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +38,7 @@ public class MainClassViewModel extends MainPage implements LifecycleOwner {
     DataModel.Favour[] eventList;
     public DataModel.Favour favour;
     public MutableLiveData<UserModel> userModelMutableLiveData = new MutableLiveData<>();
+    private int ratingProgress;
 
 
 
@@ -111,6 +117,7 @@ public class MainClassViewModel extends MainPage implements LifecycleOwner {
     private void onGetFavoursData(List<DataModel.Favour> all_f) {
         eventList = all_f.toArray(new DataModel.Favour[0]);
     }
+
 
 
 
