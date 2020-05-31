@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.PlayActivity"></activity>
+        <activity android:name=".views.DefeatActivity"></activity>
+        <activity android:name=".views.WinActivity" />
+        <activity android:name=".views.PlayActivity" />
         <activity android:name=".views.Juego" />
         <activity android:name=".views.CustomActivty" />
         <!--

@@ -1,7 +1,11 @@
 package cat.udl.tidic.amd.dam_tips.models;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Game {
     private Round round;
@@ -9,6 +13,8 @@ public class Game {
     private HashMap<String,Integer> puntuaciones;
     private int vidas;
     private Boolean alive;
+    private String[] categories = {"db","os","patterns","net"};
+
     public Game(){
         this.vidas = 3;
         alive = true;
@@ -27,13 +33,35 @@ public class Game {
         this.vidas--;
     }
 
+    public String getAvailableCategory(){
+
+        Iterator entries = puntuaciones.entrySet().iterator();
+        String seleccionada = "";
+        while ( entries.hasNext() && seleccionada.equals("")){
+            Map.Entry entry = (Map.Entry) entries.next();
+            String key = (String)entry.getKey();
+            Integer puntuacion = (Integer)entry.getValue();
+            Log.d("Game", " key es: " + key);
+            if(puntuacion < 3){
+                seleccionada = key;
+            }
+        }
+
+
+        return seleccionada;
+
+
+    }
     public boolean gameWinned(){
         boolean ganado = true;
 
         for(Integer value: puntuaciones.values()){
+
             if (value < 3) {
                 ganado = false;
             }
+
+
         }
         return ganado;
     }

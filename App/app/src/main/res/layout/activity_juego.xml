@@ -98,4 +98,13 @@
             tools:layout_editor_absoluteY="157dp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/respBacko"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Respuesta"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="260dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

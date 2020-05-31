@@ -21,7 +21,6 @@ public class GameViewModel extends AndroidViewModel {
     private GameServiceI respository;
     private Game game;
     private MutableLiveData<Question> responseQuestion;
-    private String[] categories = {"db","os","patterns","net"};
     private int currentCategory = 0;
     private SharedPreferences mPreferences;
 
@@ -39,7 +38,7 @@ public class GameViewModel extends AndroidViewModel {
 
     public void getQuestion(){
 
-
+/*
         String cat = categories[this.currentCategory];
 
         this.currentCategory++;
@@ -47,10 +46,32 @@ public class GameViewModel extends AndroidViewModel {
         if(this.currentCategory >= categories.length){
             this.currentCategory= 0;
         }
+        */
+        String cat = game.getAvailableCategory();
         String header = this.mPreferences.getString("token","");
         Log.d("token","Token: " + header);
         respository.getQuestion(header,cat);
 
+    }
+
+    public Boolean actualizarResults(String result){
+        //devuelve true si se ha perdido una vida, false si no
+        if(result.equals("-1")){
+            game.fallarPregunta();
+            return true;
+        }
+        else{
+            game.encertarPregunta(result);
+            return false;
+        }
+    }
+
+    public Boolean getDefeat(){
+        return game.gameFailed();
+    }
+
+    public Boolean getWin(){
+        return game.gameWinned();
     }
 
 
