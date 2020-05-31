@@ -1,7 +1,4 @@
 package cat.udl.tidic.amd.dam_tips.dao;
-
-import androidx.lifecycle.MutableLiveData;
-
 import com.google.gson.JsonObject;
 
 import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;

@@ -4,7 +4,6 @@ import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 
 public class MainActivityViewModel {
 
-
     public MainActivityViewModel() {
     }
 

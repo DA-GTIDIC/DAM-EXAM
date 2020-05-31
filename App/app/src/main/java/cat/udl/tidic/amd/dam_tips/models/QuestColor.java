@@ -12,7 +12,6 @@ public enum QuestColor {
     String id;
     String name;
 
-
     QuestColor(String id, String name){
         id = id;
         name = name;

@@ -15,7 +15,6 @@ public class LoginViewModel {
     public static final int ERROR_EMPTY_EMAIL = 1;
     public static final int ERROR_EMPTY_PASS = 2;
 
-
     private AccountRepo accountRepo;
 
     public LoginViewModel(){

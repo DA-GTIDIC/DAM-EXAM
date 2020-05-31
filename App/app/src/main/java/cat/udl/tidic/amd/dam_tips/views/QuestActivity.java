@@ -1,37 +1,23 @@
 package cat.udl.tidic.amd.dam_tips.views;
+import cat.udl.tidic.amd.dam_tips.R;
+import cat.udl.tidic.amd.dam_tips.adapters.QuestAdapter;
+import cat.udl.tidic.amd.dam_tips.models.Question;
+import cat.udl.tidic.amd.dam_tips.adapters.QuestDiffCallback;
+import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
+import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
+import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-
-import cat.udl.tidic.amd.dam_tips.R;
-import cat.udl.tidic.amd.dam_tips.adapters.QuestAdapter;
-import cat.udl.tidic.amd.dam_tips.models.Question;
-//import cat.udl.tidic.amd.dam_tips.viewmodels.QuestViewModel;
-
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-
-import cat.udl.tidic.amd.dam_tips.adapters.QuestAdapter;
-import cat.udl.tidic.amd.dam_tips.adapters.QuestDiffCallback;
-import cat.udl.tidic.amd.dam_tips.dao.AccountDAO;
-import cat.udl.tidic.amd.dam_tips.models.Question;
-import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
-import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
-//import cat.udl.tidic.amd.dam_tips.views.DialogClass;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static cat.udl.tidic.amd.dam_tips.R.layout.activity_quest;
 
@@ -85,31 +71,3 @@ public class QuestActivity extends AppCompatActivity {
     }
 
 }
-
-
-    /*
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(activity_quest);
-        //initView();
-
-        rvQuest = findViewById(R.id.rvQuest);
-        rvQuest.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        rvQuest.setAdapter(adapter);
-        QuestViewModel.getResponseQuest().observe(this, new Observer<List<Question>>() {
-            @Override
-            public void onChanged(List<Question> questions) {
-                adapter.submitList(questions);
-            }
-        });
-    }
-
-
-   /*
-    protected void initView(){
-        super.initView(R.layout.activity_quest);
-        /*
-     });
-   */
-
