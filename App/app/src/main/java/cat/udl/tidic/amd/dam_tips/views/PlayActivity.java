@@ -65,11 +65,11 @@ public class PlayActivity extends AppCompatActivity {
                 if(actualizado){
                     //hemos perdido? sino,informamos del fallo
                     if(gameViewModel.getDefeat()){
-                        Toast.makeText(PlayActivity.this, "Hemos perdido totalmente ", Toast.LENGTH_LONG).show();
-
+                        Intent da = new Intent(PlayActivity.this,DefeatActivity.class);
+                        startActivity(da);
                     }
                     else{
-                        Toast.makeText(PlayActivity.this, "Has fallado la pregunta, una vida menos ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PlayActivity.this, gameViewModel.getProgress(), Toast.LENGTH_LONG).show();
 
                     }
 
@@ -80,6 +80,10 @@ public class PlayActivity extends AppCompatActivity {
                         Toast.makeText(PlayActivity.this, "Has ganado colega", Toast.LENGTH_LONG).show();
                         Intent da = new Intent(PlayActivity.this,WinActivity.class);
                         startActivity(da);
+                    }
+                    else{
+                        Toast.makeText(PlayActivity.this, gameViewModel.getProgress(), Toast.LENGTH_LONG).show();
+
                     }
                 }
             }

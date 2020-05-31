@@ -70,6 +70,22 @@ public class Game {
         return (this.vidas <= 0);
     }
 
+    public String getSummary(){
+        String resultado = "";
+        resultado = resultado + "Fallos: " + (3 - this.vidas);
+
+        Iterator entries = puntuaciones.entrySet().iterator();
+        while ( entries.hasNext() ){
+            Map.Entry entry = (Map.Entry) entries.next();
+            String key = (String)entry.getKey();
+            Integer puntuacion = (Integer)entry.getValue();
+            resultado = resultado + "\n  categoria: " + key + " puntuacion: " + puntuacion;
+        }
+
+
+        return resultado;
+    }
+
     public class Round {
 
         private Boolean correcto;

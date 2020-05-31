@@ -74,7 +74,9 @@ public class GameViewModel extends AndroidViewModel {
         return game.gameWinned();
     }
 
-
+    public String getProgress(){
+        return game.getSummary();
+    }
     public LiveData getResponseLiveDataQuestion(){
         return responseQuestion;
     }
