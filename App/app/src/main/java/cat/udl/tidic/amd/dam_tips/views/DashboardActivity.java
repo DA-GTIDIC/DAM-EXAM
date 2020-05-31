@@ -1,12 +1,10 @@
 package cat.udl.tidic.amd.dam_tips.views;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +15,8 @@ public class DashboardActivity extends CustomActivty {
 
     private Button disconnect;
     private LoginViewModel loginViewModel;
+    private CardView ranking;
+    private CardView admin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,6 @@ public class DashboardActivity extends CustomActivty {
         setContentView(R.layout.activity_dashboard);
         initView();
     }
-
 
 
     protected void initView(){
@@ -43,6 +42,22 @@ public class DashboardActivity extends CustomActivty {
                 if (!s.startsWith("Error")) {
                     goTo(LoginActivity.class);
                 }
+            }
+        });
+
+        admin = findViewById(R.id.cardView_admin);
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(UserProfile.class);
+            }
+        });
+
+        ranking = findViewById(R.id.cardView_ranking);
+        ranking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goTo(RankingActivity.class);
             }
         });
 
