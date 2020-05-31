@@ -98,6 +98,7 @@ class Question(SQLAlchemyBase, JSONModel):
     id = Column(Integer, primary_key=True)
     question = Column(UnicodeText)
     category = Column(Enum(CategoryEnum))
+    rate = Column(Integer)
     answers = relationship("AnswerQuestionAssiation")
 
     @hybrid_property
@@ -106,6 +107,7 @@ class Question(SQLAlchemyBase, JSONModel):
             "id": self.id,
             "question": self.question,
             "category": self.category.value,
+            "rate": self.rate,
         }
 
 class UserToken(SQLAlchemyBase):

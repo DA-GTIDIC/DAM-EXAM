@@ -1,11 +1,14 @@
 import falcon
+from falcon.media.validators import jsonschema
 from pymysql import IntegrityError
 from sqlalchemy import func
+from sqlalchemy.orm.exc import NoResultFound
 
 import messages
 from db.models import CategoryEnum, Question, Answer, AnswerQuestionAssiation
 from hooks import requires_auth
 from resources.base_resources import DAMCoreResource
+from resources.schemas import SchemaUpdateRate
 
 
 @falcon.before(requires_auth)
@@ -96,3 +99,31 @@ class ResourceAddQuestion(DAMCoreResource):
             raise falcon.HTTPBadRequest(description=messages.parameters_invalid)
 
         resp.status = falcon.HTTP_200
+
+
+
+@falcon.before(requires_auth)
+class UpdateRate(DAMCoreResource):
+    @jsonschema.validate(SchemaUpdateRate)
+    def on_post(self, req, resp, *args, **kwargs):
+        super(UpdateRate, self).on_post(req, resp, *args, **kwargs)
+
+        current_user = req.context["auth_user"]
+        #Assegurar que el id del favor correspon al id del usuari
+        if "id" in kwargs:
+            question = self.db_session.query(Question).filter(Question.id == kwargs["id"]).one()
+            try:
+
+
+                if (req.media["rating"]) is not None:
+                    question.rate = req.media["rating"]
+
+                    print("RATE----------" + str(question.rate))
+
+                self.db_session.add(question)
+                self.db_session.commit()
+
+                resp.status = falcon.HTTP_200
+
+            except NoResultFound:
+                raise falcon.HTTPBadRequest(description=messages.user_not_found)  # TODO
