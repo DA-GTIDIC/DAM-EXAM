@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="DB" />
+    <item android:title="OS" />
+    <item android:title="NET" />
+    <item
+        android:id="@+id/itemDB"
+        android:title="PATTERNS" />
+</menu>
