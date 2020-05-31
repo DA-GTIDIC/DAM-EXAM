@@ -7,7 +7,7 @@ import falcon
 from falcon.media.validators import jsonschema
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
-
+from sqlalchemy import desc
 import messages
 from db.models import User, GenereEnum
 from hooks import requires_auth
@@ -38,6 +38,10 @@ class ResourceGetUsers(DAMCoreResource):
 
         users = list()
         query = self.db_session.query(User)
+        # Per ordenar la llista faria servir aquesta linia
+        # stmt = select([query]).order_by(desc(query.user.points))
+
+        # Després en aquest bucle en lloc de for user in query.all(), seria for user in stmt.all()
 
         for user in query.all():
             users.append(user.public_profile)
