@@ -34,7 +34,7 @@ public class PlayActivity extends AppCompatActivity {
 
         ronda = findViewById(R.id.roll);
         respuestaBack = findViewById(R.id.resp);
-
+        respuestaBack.setVisibility(View.GONE);
         gameViewModel.getResponseLiveDataQuestion().observe(this, new Observer<Question>() {
             @Override
             public void onChanged(Question s) {

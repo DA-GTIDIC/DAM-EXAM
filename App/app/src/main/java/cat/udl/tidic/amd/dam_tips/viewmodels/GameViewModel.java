@@ -38,15 +38,7 @@ public class GameViewModel extends AndroidViewModel {
 
     public void getQuestion(){
 
-/*
-        String cat = categories[this.currentCategory];
 
-        this.currentCategory++;
-
-        if(this.currentCategory >= categories.length){
-            this.currentCategory= 0;
-        }
-        */
         String cat = game.getAvailableCategory();
         String header = this.mPreferences.getString("token","");
         Log.d("token","Token: " + header);
