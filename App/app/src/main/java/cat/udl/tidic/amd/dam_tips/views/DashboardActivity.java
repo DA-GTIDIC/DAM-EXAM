@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import cat.udl.tidic.amd.dam_tips.R;
+import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
 public class DashboardActivity extends CustomActivty {
@@ -40,7 +41,9 @@ public class DashboardActivity extends CustomActivty {
         disconnect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    loginViewModel.logout();
+                Log.d("Logout","hemos hehco logout");
+                PreferencesProvider.providePreferences().edit().remove("token").commit();
+                loginViewModel.logout();
             }
         });
 
