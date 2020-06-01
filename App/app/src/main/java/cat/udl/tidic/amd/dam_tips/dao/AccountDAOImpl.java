@@ -27,10 +27,4 @@ public class AccountDAOImpl implements AccountDAO{
         return retrofit.create(AccountDAO.class).getQuestList();
     }
 
-    /*@Override
-    public Call<Question> getQuest(String category) {
-        return null;
-    }
-    */
-
 }

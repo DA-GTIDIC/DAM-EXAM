@@ -1,4 +1,4 @@
-package cat.udl.tidic.amd.dam_tips.viewmodels;
+/*package cat.udl.tidic.amd.dam_tips.viewmodels;
 
 import cat.udl.tidic.amd.dam_tips.repositories.AccountRepo;
 
@@ -17,5 +17,5 @@ public class QuestViewModel {
 
 }
 
-
+*/
 

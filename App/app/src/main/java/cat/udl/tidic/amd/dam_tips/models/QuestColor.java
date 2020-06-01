@@ -12,13 +12,13 @@ public enum QuestColor {
     String id;
     String name;
 
+    public String getName(){
+        return name;
+    }
+
     QuestColor(String id, String name){
         id = id;
         name = name;
-    }
-
-    public String getName(){
-        return name;
     }
 
     public static int getColourResource(String e){
@@ -34,7 +34,6 @@ public enum QuestColor {
             default:
                 return R.color.red;
         }
-
     }
 }
 

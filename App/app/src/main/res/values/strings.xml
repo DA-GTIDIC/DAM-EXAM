@@ -83,6 +83,7 @@
     <string name="calendar">Calendar</string>
     <string name="title_activity_maps">Map</string>
     <string name="this_icon_represents_the_type_of_the_event">This icon represents the type of the event</string>
+    <string name="question_list">Question List</string>
 
 </resources>
 

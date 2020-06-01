@@ -52,8 +52,8 @@ public class DashboardActivity extends CustomActivty {
 
     }
 
-        @Override
-        public void onBackPressed(){
-            finishAffinity();
-        }
+    @Override
+    public void onBackPressed(){
+        finishAffinity();
+    }
 }
