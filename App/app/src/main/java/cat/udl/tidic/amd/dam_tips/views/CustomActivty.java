@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import cat.udl.tidic.amd.dam_tips.R;
 
 public class CustomActivty extends AppCompatActivity {
 

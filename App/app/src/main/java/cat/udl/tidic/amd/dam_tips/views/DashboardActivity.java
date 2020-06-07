@@ -1,15 +1,15 @@
 package cat.udl.tidic.amd.dam_tips.views;
-import cat.udl.tidic.amd.dam_tips.R;
-import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
-import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.cardview.widget.CardView;
+import androidx.lifecycle.Observer;
 
+import cat.udl.tidic.amd.dam_tips.R;
+import cat.udl.tidic.amd.dam_tips.viewmodels.LoginViewModel;
 
 public class DashboardActivity extends CustomActivty {
 
@@ -22,9 +22,24 @@ public class DashboardActivity extends CustomActivty {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         initView();
+
+
+        admi = findViewById(R.id.cardViewAdmin);
+        admi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, QuestionList.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    protected void initView() {
+    /*public void Admi(View v){
+        goTo(QuestionList.class);
+    }
+     */
+
+    protected void initView(){
         loginViewModel = new LoginViewModel();
         disconnect = findViewById(R.id.disconnect);
         disconnect.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +48,7 @@ public class DashboardActivity extends CustomActivty {
                 loginViewModel.logout();
             }
         });
+
         loginViewModel.getResponseLogin().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -41,15 +57,6 @@ public class DashboardActivity extends CustomActivty {
                 }
             }
         });
-
-        admi = findViewById(R.id.cardViewAdmin);
-        admi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goTo(QuestActivity.class);
-            }
-        });
-
     }
 
     @Override

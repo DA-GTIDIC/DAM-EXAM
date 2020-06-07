@@ -84,6 +84,11 @@
     <string name="title_activity_maps">Map</string>
     <string name="this_icon_represents_the_type_of_the_event">This icon represents the type of the event</string>
     <string name="question_list">Question List</string>
+    <string name="questlist">TextView</string>
+    <string name="rate_question">Rate question</string>
+    <string name="send_question_rating">Send question rating</string>
+    <string name="send">SEND</string>
+    <string name="rate">rate</string>
 
 </resources>
 

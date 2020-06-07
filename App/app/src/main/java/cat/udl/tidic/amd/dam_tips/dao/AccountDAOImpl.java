@@ -1,12 +1,13 @@
 package cat.udl.tidic.amd.dam_tips.dao;
+
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
+import cat.udl.tidic.amd.dam_tips.models.Question;
 import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
-import java.util.List;
-import cat.udl.tidic.amd.dam_tips.models.Question;
 
 public class AccountDAOImpl implements AccountDAO{
 
@@ -23,8 +24,7 @@ public class AccountDAOImpl implements AccountDAO{
     }
 
     @Override
-    public Call<List<Question>> getQuestList() {
-        return retrofit.create(AccountDAO.class).getQuestList();
+    public Call<List<Question>> getQuestionList() {
+        return retrofit.create(AccountDAO.class).getQuestionList();
     }
-
 }

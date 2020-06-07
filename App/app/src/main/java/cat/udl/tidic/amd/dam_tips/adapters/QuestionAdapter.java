@@ -11,42 +11,44 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import cat.udl.tidic.amd.dam_tips.R;
-import cat.udl.tidic.amd.dam_tips.models.QuestColor;
 import cat.udl.tidic.amd.dam_tips.models.Question;
+import cat.udl.tidic.amd.dam_tips.models.QuestionColours;
 
 
-public class QuestAdapter extends ListAdapter<Question, QuestAdapter.PreguntesHolder> {
+public class QuestionAdapter extends ListAdapter<Question, QuestionAdapter.PreguntesHolder> {
 
     private OnItemClickListener eventItemListener;
 
-    public QuestAdapter(@NonNull DiffUtil.ItemCallback<Question> QuestDiffCallback) {
-        super(QuestDiffCallback);
+    public QuestionAdapter(@NonNull DiffUtil.ItemCallback<Question> diffCallback) {
+        super(diffCallback);
     }
 
     @NonNull
     @Override
     public PreguntesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_qitem, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_items, parent, false);
         return new PreguntesHolder(itemView);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull PreguntesHolder holder, int position) {
-        Question actualquest = getItem(position);
-        holder.namequest.setText(actualquest.getQuestion());
-        holder.coloursquest.setBackgroundColor(QuestColor.getColourResource(actualquest.getCategory()));
+        Question currentPreguntes = getItem(position);
+        holder.namequest.setText(currentPreguntes.getQuestion());
+        holder.colourquest.setBackgroundColor(QuestionColours.getColours(currentPreguntes.getCategory()));
+
     }
 
     public class PreguntesHolder extends RecyclerView.ViewHolder {
-
-        public TextView  namequest;
-        private TextView coloursquest;
+        public TextView namequest;
+        private TextView colourquest;
 
         public PreguntesHolder(View itemView) {
-
             super(itemView);
-            namequest = itemView.findViewById(R.id.quest_name);
-            coloursquest = itemView.findViewById(R.id.quest_colour);
+
+            namequest = itemView.findViewById(R.id.namequest);
+            colourquest = itemView.findViewById(R.id.colorquest);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,9 +59,9 @@ public class QuestAdapter extends ListAdapter<Question, QuestAdapter.PreguntesHo
                     }
                 }
             });
+
         }
     }
-
     public interface OnItemClickListener {
         void onItemClick(Question question);
     }
