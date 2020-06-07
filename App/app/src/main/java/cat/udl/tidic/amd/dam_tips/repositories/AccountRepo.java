@@ -46,6 +46,7 @@ public class AccountRepo {
 
                     String authToken = res.get("token").getAsString();
                     Log.d(TAG,  "createTokenUser() -> ha rebut el token:  " + authToken);
+                    //Log.d(TAG, "createTokenUser() -> ha rebut l'examen:  " + res.get("exam"));
                     mResponseLogin.setValue(authToken);
                     PreferencesProvider.providePreferences().edit().
                             putString("token", authToken).apply();
@@ -114,3 +115,4 @@ public class AccountRepo {
         return mResponseLogin;
     }
 }
+

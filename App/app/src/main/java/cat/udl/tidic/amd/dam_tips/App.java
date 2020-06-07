@@ -1,6 +1,9 @@
 package cat.udl.tidic.amd.dam_tips;
 
 import android.app.Application;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import cat.udl.tidic.amd.dam_tips.preferences.PreferencesProvider;
 
@@ -12,4 +15,9 @@ public class App extends Application {
         PreferencesProvider.init(this);
     }
 }
+
+
+
+
+
 

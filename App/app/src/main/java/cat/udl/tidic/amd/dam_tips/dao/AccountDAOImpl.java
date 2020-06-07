@@ -1,11 +1,11 @@
 package cat.udl.tidic.amd.dam_tips.dao;
 
-import androidx.lifecycle.MutableLiveData;
-
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
+import cat.udl.tidic.amd.dam_tips.models.Question;
 import cat.udl.tidic.amd.dam_tips.network.RetrofitClientInstance;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 
@@ -21,5 +21,10 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public Call<Void> deleteTokenUser(JsonObject token) {
         return  retrofit.create(AccountDAO.class).deleteTokenUser(token);
+    }
+
+    @Override
+    public Call<List<Question>> getQuestionList() {
+        return retrofit.create(AccountDAO.class).getQuestionList();
     }
 }
